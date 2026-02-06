@@ -14,8 +14,11 @@ jobs:
 
       - name: Cache dependencies
         uses: ./.github/varia
+        id: cache-deps
         with:
           caching: 'false'
+      - name: output information
+        run: echo "whether cached? ${{ steps.cache-deps.outputs.used-cache }}"
       - name: Lint code
         run: npm run lint
   test:
